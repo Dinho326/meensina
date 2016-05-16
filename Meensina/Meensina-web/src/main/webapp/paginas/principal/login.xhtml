@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:h="http://java.sun.com/jsf/html" 
+				xmlns:f="http://java.sun.com/jsf/core" 
+				xmlns:ui="http://java.sun.com/jsf/facelets" 
+				template="/templates/templateInicio.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+				
+  <ui:define name="conteudo">
+
+<div class="app">
+  <div class="center-block w-xxl w-auto-xs p-v-md">
+    <div class="navbar">
+      <div class="navbar-brand m-t-lg text-center">
+         <img src="#{facesContext.externalContext.request.contextPath}/resources/images/Professor-icon.png" width="40" height="40"/>
+		   <span class="m-l inline">#{mensagens['tituloApp']}</span>
+      </div>
+    </div>
+      <h:form prependId="false">
+      <h:messages  id="mensagem" infoClass="bg-success" errorClass="bg-danger" ></h:messages>
+    <div class="p-lg panel md-whiteframe-z1 text-color m">
+      <div class="m-b text-sm">
+       <h:outputText value="#{mensagens['entreLogin']}" />
+      </div>
+        <div class="md-form-group">
+         <h:inputText id="email" value="#{usuarioLogin.usuario.email}" class="md-input" required="true" requiredMessage="Campo e-mail Obrigatório"/>
+          <label>#{mensagens['display.email']}</label>
+        </div>
+        <div class="md-form-group">
+          <h:inputSecret value="#{usuarioLogin.usuario.senha}" class="md-input"  required="true" requiredMessage="Campo e-mail Obrigatório" />
+          <label>#{mensagens['display.senha']}</label>
+        </div>      
+       
+        <h:commandButton action="#{usuarioLogin.login()}" value="#{mensagens['display.entre']}"  class="md-btn md-raised pink btn-block p-h-md"/>
+    </div>
+
+    <div class="p-v-lg text-center">
+      <div><h:link class="md-btn" outcome="recuperar-senha" value="#{mensagens['display.esqueceuSenha']}"/></div>
+      <div >#{mensagens['display.naotemconta']} <h:link class="md-btn" outcome="cadastrar" value="#{mensagens['display.criarNovaConta']}" /></div>
+    </div>
+      </h:form>
+  </div>
+</div>
+</ui:define>
+</ui:composition>

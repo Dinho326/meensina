@@ -1,0 +1,123 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:h="http://java.sun.com/jsf/html" 
+				xmlns:f="http://java.sun.com/jsf/core" 
+				xmlns:ui="http://java.sun.com/jsf/facelets" 
+				template="/templates/templateInicio.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+				
+  <ui:define name="conteudo">
+
+<div class="app">
+  <div class="center-block w-xxl w-auto-xs p-v-md">
+    <div class="navbar">
+      <div class="navbar-brand m-t-lg text-center">
+         <img src="#{facesContext.externalContext.request.contextPath}/resources/images/Professor-icon.png" width="40" height="40"/>
+		   <span class="m-l inline">#{mensagens['tituloApp']}</span>
+      </div>
+    </div>
+			<h:form prependId="false">
+			  <h:messages id="mensagem" infoClass="bg-success" errorClass="bg-danger"></h:messages>
+				<div class="p-lg panel md-whiteframe-z1 text-color m">
+					<div class="m-b text-sm"> #{mensagens['display.criarNovaConta']}</div>
+
+					<div class="md-form-group">
+						<h:inputText id="email" value="#{cadastrarUserBean.usuario.email}"
+							class="md-input" required="true"
+							requiredMessage="email obrigatório">
+							<f:validateRegex
+								pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+						</h:inputText>
+						<label>#{mensagens['display.email']}</label>
+					</div>
+					
+					<div class="md-form-group">
+						<h:inputSecret id="senha" label="#{mensagens['display.senha']}"
+							value="#{cadastrarUserBean.usuario.senha}" class="md-input"
+							required="true" />
+						<label>#{mensagens['display.senha']}</label>
+					</div>
+					
+					<div class="md-form-group">
+						<h:inputSecret id="Repete-senha"
+							value="#{cadastrarUserBean.senha}" class="md-input"
+							required="true" requiredMessage="senha obrigatório" />
+						<label>#{mensagens['display.repita.senha']}</label>
+					</div>
+					
+					<div class="md-form-group">
+						<p:inputMask converter="converteCPF" mask="999.999.999-99"
+							value="#{cadastrarUserBean.usuario.cpf}" required="true"
+							requiredMessage="Campo CPF Obrigatório" class="md-input"></p:inputMask>
+						<label>#{mensagens['display.cpf']}</label>
+					</div>
+
+					<div>
+						<div class="m-b-md">
+							<label class="md-check"> <h:selectBooleanCheckbox
+									class="checkTerm" value="#{cadastrarUserBean.check}" /> <i
+								class="indigo"></i> <h:outputLabel value="#{mensagens['display.Concordo.com']}" /><u><a
+									data-toggle="modal" data-target="#myModal">#{mensagens['display.termos.politicas']}</a></u>
+
+							</label>
+							<div id="myModal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">x</button>
+											<h4 class="modal-title">Morbi volutpat mir</h4>
+										</div>
+										<div class="modal-body">
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing
+												elit. Donec luctus nulla a mollis facilisis. Proin viverra
+												faucibus diam, varius interdum leo ultrices non. Nunc sem
+												nunc, sollicitudin id quam ut, feugiat scelerisque justo.
+												Nam nibh risus, finibus sed risus in, ultrices ullamcorper
+												arcu. Sed molestie sollicitudin enim quis ullamcorper. Nunc
+												auctor diam vel euismod tempor. Vivamus vestibulum augue
+												quis lacinia sodales. Etiam lectus ligula, aliquet sit amet
+												mattis id, tristique vel augue.</p>
+											<p>Praesent congue aliquam erat, in pulvinar urna
+												placerat in. Vestibulum orci diam, viverra ornare
+												sollicitudin sed, commodo a neque. Quisque maximus urna non
+												fermentum fringilla. Sed placerat lorem sapien, eu fermentum
+												justo tincidunt ac. Proin in dui porta, facilisis arcu ac,
+												feugiat massa. Ut suscipit leo eget nisi viverra, ac pretium
+												ante consequat. Praesent vel diam euismod, lacinia nisi ut,
+												maximus tortor. Praesent in pellentesque purus, ac semper
+												mauris. Sed elementum quis purus in congue. Nulla purus mi,
+												vestibulum nec consequat quis, congue at turpis. Vivamus
+												egestas, diam in vehicula imperdiet, ligula nisi
+												sollicitudin dolor, eget posuere lacus magna sed metus. In
+												varius interdum maximus.</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button"
+												class="md-btn md-raised pink btn-block p-h-md"
+												data-dismiss="modal">#{mensagens['display.fechar']}</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<h:commandButton action="#{cadastrarUserBean.cadastrarUsuario()}"
+							value="CADASTRAR" type="submit"
+							class="md-btn md-raised pink btn-block p-h-md" />
+
+					</div>
+
+				</div>
+				<div class="p-v-lg text-center">
+
+					<div>
+						#{mensagens['display.ja.tem.uma.conta']}
+							<h:link class="md-btn" outcome="login" value="#{mensagens['display.faca.login']}"/>
+					</div>
+
+				</div>
+			</h:form>
+		</div>
+	</div>
+</ui:define>
+</ui:composition>

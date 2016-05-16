@@ -1,0 +1,50 @@
+.ui-inputfield.ui-state-focus, .ui-widget-content .ui-inputfield.ui-state-focus,
+	.ui-widget-header 
+.ui-inputfield.ui-state-focus {
+	box-shadow: 0 0 0px #85b2cb, 0 0px 0px #8f8f8f inset
+}
+
+body {
+    overflow: auto !important;
+}
+
+.md-btn {
+	vertical-align: middle;
+}
+
+.md-input-fixed {
+	outline: 0 none !important;
+}
+
+#mensagem {
+	list-style: outside none none;
+	padding: 0 18px;
+}
+
+#mensagem>li {
+	border-radius: 3px;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.26);
+	padding: 3px;
+}
+
+#fundo-loading {
+	background-color: black;
+	position: absolute;
+	height: 700px;
+	opacity: 0.2;
+	width: 100%;
+	top: 0;
+	z-index: 99999;
+	display: none;
+}
+
+#image{
+	left: 50%;
+    position: absolute;
+    top: 50%;
+    margin-left:-33px;
+    margin-top:-33px;
+    width: 66px;
+    z-index: 99999;
+    display:none;
+}

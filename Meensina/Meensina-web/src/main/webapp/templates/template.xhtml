@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<html lang="pt-br">
+	
+	
+	<ui:insert name="topoInicio">
+		<ui:include src="/templates/topoInicio.xhtml" />
+	</ui:insert>
+	
+	<body>
+	
+		<div class="app">
+		
+		<ui:insert name="topoInicio">
+			<ui:include src="/templates/menuLateral.xhtml" />
+		</ui:insert>
+		
+		<!-- content -->
+ 		 <div id="content" class="app-content" role="main">
+   		 <div class="box">
+   		 
+   		 <ui:insert name="topoInicio">
+			<ui:include src="/templates/topo.xhtml" />
+		</ui:insert>
+		
+		
+		<div class="box-row">
+		  <ui:insert name="conteudo" />
+		</div>
+		
+		  </div>
+	   </div>
+    </div>
+	
+		<ui:insert name="footerInicio">
+			<ui:include src="/templates/footerInicio.xhtml" />
+		</ui:insert>
+   		 
+   </body>
+ </html>  		 
+ </ui:composition>	 

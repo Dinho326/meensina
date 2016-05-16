@@ -1,0 +1,129 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:facet name="menuLateral" />
+
+<!-- aside -->
+  <aside id="aside" class="app-aside modal fade " role="menu">
+    <div class="left">
+      <div class="box bg-white">
+  <div class="navbar md-whiteframe-z1 no-radius blue" >
+      <!-- brand -->
+     <figure style=" padding-top: 12px;">
+		   <img src="#{facesContext.externalContext.request.contextPath}/resources/images/Professor-icon.png" width="40" height="40" />
+		   <span class="hidden-folded m-l inline">#{mensagens['tituloApp']}</span>
+	 </figure>
+      <!-- / brand -->
+  </div>
+  <div class="box-row">
+    <div class="box-cell scrollable hover">
+      <div class="box-inner">
+        <div class="p hidden-folded blue-50" style="background-image:url(#{facesContext.externalContext.request.contextPath}/resources/images/bg.png); background-size:cover">
+          <div class="w-xs inline">
+          <h:graphicImage id="fotoLateral"  value="/resources/fotos/#{usuarioUpdateBean.usuario.cpf}/#{usuarioUpdateBean.usuario.caminhoFoto}" class="img-responsive rounded" title="Foto do usuário"/>
+          </div>
+          <a class="block m-t-sm" ui-toggle-class="hide, show" target="#nav, #account">
+            <span class="block font-bold"><h:outputText value="#{usuarioUpdateBean.usuario.primeiroNome}" /> </span>
+            <span class="pull-right auto">
+              <i class="fa inline fa-caret-down"></i>
+              <i class="fa none fa-caret-up"></i>
+            </span>
+           <h:outputText value="#{usuarioUpdateBean.usuario.email}" />
+          </a>
+        </div>
+        <div id="nav">
+          <nav>
+  <ul class="nav">
+    <li class="nav-header m-v-sm hidden-folded">
+      
+    </li>
+    <li>
+      <a class="md-ink-ripple" >
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+        <i class="pull-right up"><b class="badge no-bg">6</b></i>
+        <i class="icon mdi-action-search i-20   "></i>
+        <span class="font-normal">#{mensagens['display.procurar']}</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li>
+          <a md-ink-ripple="" href="listaProfessores.html">#{mensagens['display.listar.todos']}</a>
+        </li>
+        <li>
+          <a md-ink-ripple="" href="wall.html">#{mensagens['display.por.cidade']}</a>
+          <!-- Implementar ajax para input com cidades pré carregadas -->
+        </li>
+		<li>
+          <a md-ink-ripple="" href="wall.html">#{mensagens['display.por.area']}</a>
+        </li>
+		<li>
+          <a md-ink-ripple="" href="wall.html">#{mensagens['display.por.categoria']}</a>
+        </li>
+      </ul>
+    </li>
+    <li class="b-b b m-v-sm"></li>
+    <li>
+      <a md-ink-ripple="" ui-toggle-class="hide, show" target="#nav, #account">
+        <span>Menu</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+        </div>
+        <div id="account" class="hide m-v-xs">
+          <nav>
+            <ul class="nav">
+              <li>
+                <a md-ink-ripple="" >
+                  <i class="icon mdi-action-perm-contact-cal i-20"></i>
+                  <span>Perfil</span>
+                </a>
+              </li>
+              <li>
+                <a md-ink-ripple="">
+                  <i class="icon mdi-action-settings i-20"></i>
+                  <span>Configuração</span>
+                </a>
+              </li>
+              <li>
+                <a md-ink-ripple="">
+                  <i class="icon mdi-action-exit-to-app i-20"></i>
+                  <span>Sair</span>
+                </a>
+              </li>
+              <li class="m-v-sm b-b b"></li>
+              <li>
+                <div class="nav-item" ui-toggle-class="folded" target="#aside">
+                  <label class="md-check">
+                    <input type="checkbox"/>
+                    <i class="purple no-icon"></i>
+                    <span class="hidden-folded">Mostrar/Esconder</span>
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <ul class="nav b-t b">
+      <li>
+        <a  target="_blank" md-ink-ripple="">
+          <i class="icon mdi-action-help i-20"></i>
+          <span>Ajuda</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </aside>
+  <!-- / aside -->
+  </ui:composition>

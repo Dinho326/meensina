@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:h="http://java.sun.com/jsf/html" 
+				xmlns:f="http://java.sun.com/jsf/core" 
+				xmlns:ui="http://java.sun.com/jsf/facelets" 
+				template="/templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+				
+  <ui:define name="conteudo">
+
+<div class="box-cell">
+
+ <div class="box-inner padding">
+            
+
+<div class="row row-sm">
+  <div class="col-sm-4">
+    <div class="panel panel-card">
+      <div id="foto-perfil" style="background:url(/Meensina-web/resources/fotos/#{usuarioUpdateBean.usuario.cpf}/#{usuarioUpdateBean.usuario.caminhoFoto}) center center; background-size:cover">
+        <div class="p-lg bg-white-overlay text-center r-t">
+          <a href="#"  class="w-xs inline">
+            <h:graphicImage  value="/resources/fotos/#{usuarioUpdateBean.usuario.cpf}/#{usuarioUpdateBean.usuario.caminhoFoto}" styleClass="img-circle img-responsive" />
+          </a>
+          <div class="m-b m-t-sm h2">
+            <span class=""><h:outputText value="#{usuarioLogin.usuario.primeiroNome}" /></span>
+          </div>
+          <p>
+            <h:outputText value="#{usuarioLogin.usuario.fraseInspira}" />
+          </p>
+        </div>
+      </div>
+      <div class="p">
+        <p> #{mensagens['display.sobre.mim']} </p>
+        <p><h:outputText value="#{usuarioLogin.usuario.sobreMim}" />  </p>
+          <!-- <a class="text-muted">
+            <i class="fa ui-icon fa-linkedin"></i>
+          </a> -->
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+</ui:define>
+</ui:composition>

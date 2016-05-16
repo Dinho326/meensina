@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:h="http://java.sun.com/jsf/html" 
+				xmlns:f="http://java.sun.com/jsf/core" 
+				xmlns:ui="http://java.sun.com/jsf/facelets" 
+				template="/templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+				
+  <ui:define name="conteudo">
+<div class="box-cell">
+ <div class="box-inner padding">
+  <div class="row col-md-6">
+	<div class="card">
+	  <div class="col-md-12">
+        <div class="panel no-border">
+          <div class="panel-heading">	
+            <span class="font-bold"> #{mensagens['msg.enviar.msg']} </span>
+            <small class="block text-muted">#{mensagens['msg.digite.msg']}</small>
+          </div>
+        </div>
+      </div>
+      
+         <h:form prependId="false">
+         <h:messages id="mensagem" infoClass="bg-success" errorClass="bg-danger"></h:messages>
+        	<h:inputTextarea id="texto" value="#{mensagensGerais.mensagem}" styleClass="form-control no-border p-md"  rows="4" />
+        	<div class="lt p">
+        	<h:commandButton id="acao" action="#{mensagensGerais.enviarMensagem()}" value="#{mensagens['display.enviar']}" styleClass="md-btn md-raised pull-right p-h-md purple">
+        		<f:ajax render="mensagem" execute="texto acao" onevent="function(data) { loading(data) }"/>
+        	</h:commandButton>
+	          <ul class="nav nav-pills nav-sm">
+	            <li><a href="#"><i class="fa fa-camera"></i></a></li>
+	            <li><a href="#">=<i class="fa fa-video-camera"></i></a></li>
+	          </ul>
+      		</div>
+    	</h:form>
+    </div>
+  </div>
+ </div>
+</div>  
+</ui:define>
+</ui:composition>

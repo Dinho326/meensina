@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:h="http://java.sun.com/jsf/html" 
+				xmlns:f="http://java.sun.com/jsf/core" 
+				xmlns:ui="http://java.sun.com/jsf/facelets" 
+				template="/templates/template.xhtml"
+				xmlns:p="http://primefaces.org/ui">
+
+ <ui:define name="conteudo">	
+  <div class="box-cell">
+	<div class="box-inner padding">
+		<div class="padding-out">
+		  <div class="p-h-md p-v bg-white box-shadow pos-rlt">
+		    <h3 class="no-margin">#{mensagens['display.config.perfil']}</h3>
+		  </div>
+		  <div class="box">
+		  	<h:form id="formulario" prependId="false" >
+			    <div class="col-md-3 ">
+				    <div class="row">
+				      <div id="foto-perfil" style="background:url(/Meensina-web/resources/fotos/#{usuarioUpdateBean.usuario.cpf}/#{usuarioUpdateBean.usuario.caminhoFoto}) center center; background-size:cover">
+				        <div class="p-lg bg-white-overlay text-center">
+				          <a  class="w-xs inline">
+				          	<h:graphicImage id="fotoUsuario" value="/resources/fotos/#{usuarioUpdateBean.usuario.cpf}/#{usuarioUpdateBean.usuario.caminhoFoto}" styleClass="img-circle img-responsive"/>
+				          </a>
+				          <div class="m-b m-t-sm h2">
+				            <span class="text-black"><h:outputText value="#{usuarioUpdateBean.usuario.primeiroNome}" /></span>
+				          </div>
+				          <p>
+				            <h:outputText value="#{usuarioUpdateBean.usuario.fraseInspira}" />
+				          </p>
+				        </div>
+				      </div>
+				      <ul class="nav nav-lists b-t">
+				        <li class="active">
+				        <h:link outcome="perfil-configuracao" value="#{mensagens['display.perfil.publico']}"/>
+				        </li>
+				        <li>
+				          <h:link outcome="configuracao-conta" value="#{mensagens['display.config.conta']}" />
+				        </li>
+				        <li>
+				        <h:link class="icon mdi-social-school i-20"  outcome="professor-configuracao" value="#{mensagens['display.cadastro.professor']}" />
+				        </li>
+				      </ul>
+				    </div>
+				</div>
+			    <div class="col-md-9 b-l bg-white bg-auto">
+			    	<div class="row">
+			      <div class="p-md bg-light lt b-b font-bold">#{mensagens['display.perfil.publico']}</div>
+			      <div class="p-md col-md-6">
+			      
+			        <h:messages id="mensagem" infoClass="bg-success" errorClass="bg-danger"></h:messages>
+			     	<h:panelGroup columns="2">
+			          
+			          <div class="row col-md-12">
+				        <label>#{mensagens['display.area']}</label>
+				          <h:selectOneMenu styleClass="form-control" id="selectArea" value="#{cadastrarProfessor.areaSelecionada}" required="true">
+				          	<f:selectItem itemLabel="#{mensagens['display.escolha.area']}"  itemDisabled="true"/>
+				          	<f:selectItems value="#{cadastrarProfessor.areas}" var="area" itemLabel="#{area.descricaoArea}" itemValue="#{area.areaId}" />
+				          	<f:ajax listener="#{cadastrarProfessor.listarGrupoCategorias}" execute="selectArea" render="selectCategoria"/>
+				          </h:selectOneMenu>
+			          </div>
+			          
+			          <div class="row col-md-12">
+			            <label style="margin-top: 20px;">#{mensagens['display.categoria']}</label>
+				          <h:selectOneMenu styleClass="form-control" id="selectCategoria" value="#{cadastrarProfessor.categoriaSelecionada}" required="true">
+				            <f:selectItem itemLabel="#{mensagens['display.escolha.categoria']}" itemValue="0" itemDisabled="true"/>
+				            <f:selectItems value="#{cadastrarProfessor.categorias}" var="categoria" itemLabel="#{categoria.descricaoCategoria}" itemValue="#{categoria.categoriaId}"/>
+				          	<f:ajax listener="#{cadastrarProfessor.listarGrupoEspecialidade}" render="selectEspecialidade" />
+				          </h:selectOneMenu>
+			          </div>
+			          
+			          
+			          <div class="row col-md-12">
+			            <label style="margin-top: 20px;">#{mensagens['display.especialidade']}</label>
+				          <h:selectOneMenu styleClass="form-control" id="selectEspecialidade" value="#{cadastrarProfessor.especialidadeSelecionada}" required="true">
+					          <f:selectItem itemLabel="#{mensagens['display.escolha.especialidade']}" itemValue="0" itemDisabled="true"/>
+					          <f:selectItems value="#{cadastrarProfessor.especialidades}" var="especialidade" itemLabel="#{especialidade.descricaoEspecialidade}" itemValue="#{especialidade.especialidadeId}"/>
+				          </h:selectOneMenu>
+			          </div>
+			          
+			        </h:panelGroup>
+			        
+			        <h:commandButton action="#{cadastrarProfessor.formularioDois()}" value="#{mensagens['display.avancar']}" styleClass="md-btn md-flat m-b btn-fw text-info" style="margin-top: 20px;">
+			        	<!-- <f:ajax  /> -->
+			        </h:commandButton>
+			        
+			      </div>
+			      </div>
+			      
+			    </div>
+		    </h:form>
+		  </div>
+		</div>
+	</div>
+</div>
+ 
+ </ui:define>
+ </ui:composition>
+
+ 

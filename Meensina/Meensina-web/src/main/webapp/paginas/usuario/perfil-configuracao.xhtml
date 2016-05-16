@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:h="http://java.sun.com/jsf/html" 
+				xmlns:f="http://java.sun.com/jsf/core" 
+				xmlns:ui="http://java.sun.com/jsf/facelets" 
+				template="/templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+				
+  <ui:define name="conteudo">	
+  <div class="box-cell">
+	<div class="box-inner padding">
+		<div class="padding-out">
+		  <div class="p-h-md p-v bg-white box-shadow pos-rlt">
+		    <h3 class="no-margin">#{mensagens['display.config.perfil']}</h3>
+		  </div>
+		  <div class="box">
+		  	<h:form id="asdasd" prependId="false" enctype="multipart/form-data" >
+			    <div class="col-md-3 ">
+				    <div class="row">
+				      <div id="foto-perfil" style="background:url(/Meensina-web/resources/fotos/#{usuarioUpdateBean.usuario.cpf}/#{usuarioUpdateBean.usuario.caminhoFoto}) center center; background-size:cover">
+				        <div class="p-lg bg-white-overlay text-center">
+				          <a  class="w-xs inline">
+				          	<h:graphicImage id="fotoUsuario" value="/resources/fotos/#{usuarioUpdateBean.usuario.cpf}/#{usuarioUpdateBean.usuario.caminhoFoto}" styleClass="img-circle img-responsive"/>
+				          </a>
+				          <div class="m-b m-t-sm h2">
+				            <span class="text-black"><h:outputText value="#{usuarioUpdateBean.usuario.primeiroNome}" /></span>
+				          </div>
+				          <p>
+				            <h:outputText value="#{usuarioUpdateBean.usuario.fraseInspira}" />
+				          </p>
+				        </div>
+				      </div>
+				      <ul class="nav nav-lists b-t">
+				        <li class="active">
+				        <h:link outcome="perfil-configuracao" value="#{mensagens['display.perfil.publico']}"/>
+				        </li>
+				        <li>
+				          <h:link outcome="configuracao-conta" value="#{mensagens['display.config.conta']}" />
+				        </li>
+				        <li>
+				        <h:link class="icon mdi-social-school i-20"  outcome="professor-configuracao" value="#{mensagens['display.cadastro.professor']}" />
+				        </li>
+				      </ul>
+				    </div>
+				</div>
+			    <div class="col-md-9 b-l bg-white bg-auto">
+			    	<div class="row">
+			      <div class="p-md bg-light lt b-b font-bold">#{mensagens['display.perfil.publico']}</div>
+			      <div class="p-md col-md-6">
+			      
+			       <h:messages id="mensagem" infoClass="bg-success" errorClass="bg-danger"></h:messages>
+			        <div class="md-form-group">
+			          <label>#{mensagens['display.anexar.foto']}</label>
+			          <div class="form-file">
+			           <p:fileUpload value="#{usuarioUpdateBean.file}"  id="uploadFotoHidden"  mode="simple"/>
+			          </div>
+			          <div class="row">
+			          	<div class="col-md-4">
+				          <h:commandButton styleClass="md-btn md-flat m-b btn-fw text-info" value="Foto" id="uploadFoto"  />
+				        </div>
+				        <div class="col-md-8">
+				          <h:inputText id="srcUploadFoto" class="md-input"/>
+			           	</div>
+			          </div>
+			        </div>
+			        <div class="md-form-group">
+			          <label>#{mensagens['display.primeiro.nome']}</label>
+			          <h:inputText value="#{usuarioUpdateBean.usuario.primeiroNome}"  class="md-input" />
+			        </div>
+					<div class="md-form-group">
+			          <label>#{mensagens['display.ultimo.nome']}</label>
+			          <h:inputText value="#{usuarioUpdateBean.usuario.ultimoNome}" class="md-input" />
+			        </div>
+					<div class="md-form-group">
+			          <label>#{mensagens['display.frase.que.inspira']}</label>
+					  <h:inputText value="#{usuarioUpdateBean.usuario.fraseInspira}" class="md-input"/>
+			        </div>
+			        <div class="md-form-group">
+			          <label>#{mensagens['display.sobre.mim']}</label>
+					  <h:inputTextarea value="#{usuarioUpdateBean.usuario.sobreMim}" class="md-input" rows="4" />
+			        </div>
+			        <h:commandButton value="#{mensagens['display.atualizar.perfil']}" action="#{usuarioUpdateBean.atualizarDados()}" styleClass="md-btn md-flat m-b btn-fw text-info">
+			        	  <f:ajax execute="@form" render="asdasd"/>
+			        </h:commandButton>
+			      </div>
+			      </div>
+			      
+			    </div>
+		    </h:form>
+		  </div>
+		</div>
+	</div>
+</div>
+  </ui:define>
+  </ui:composition>

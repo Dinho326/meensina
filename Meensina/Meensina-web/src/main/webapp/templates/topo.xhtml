@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:h="http://java.sun.com/jsf/html"
+	 xmlns:f="http://java.sun.com/jsf/core"
+	 xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:facet name="topo" />
+  
+      <!-- Content Navbar -->
+  
+  
+      <div class="navbar md-whiteframe-z1 no-radius blue">
+        <!-- Open side - Naviation on mobile -->
+        <a style="md-ink-ripple" data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
+        <!-- / -->
+        <!-- Page title - Bind to $state's title -->
+        <div class="navbar-item pull-left h4">#{mensagens['display.bem.vindo']}</div>
+        <!-- / -->
+        <!-- Common tools -->
+        <ul class="nav navbar-tool pull-right">
+          <li class="dropdown">
+            <a style="md-ink-ripple" data-toggle="dropdown">
+              <i class="mdi-navigation-more-vert i-24"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up text-color">
+            	<li><h:link outcome="perfil-publico" value="#{mensagens['display.perfil']}"/></li>
+             	<li><h:link outcome="perfil-configuracao" value="#{mensagens['display.config']}"/></li>
+            	 <li><h:link outcome="mensagem" value="#{mensagens['msg.enviar.msg']}"/></li>
+             	<li><h:link outcome="mensagem" value="#{mensagens['display.help']}"/></li>
+            	 <li class="divider"></li>
+             <li><h:link outcome="mensagem" value="#{mensagens['display.sair']}"/></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="pull-right" ui-view="navbar@"></div>
+      </div>
+     <!-- Content -->
+</ui:composition>      
+  
